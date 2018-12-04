@@ -22,10 +22,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.http.get(this.restItemsUrl, { headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
-    }).subscribe(data => {
-      this.device = data as Device;
-      this.opentokService.initSession(this.device.sessionId, this.device.tbToken).then((session: OT.Session) => {
+    // this.http.get(this.restItemsUrl, { headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
+    // }).subscribe(data => {
+    //   this.device = data as Device;
+      this.opentokService.initSession('this.device.sessionId', 'this.device.tbToken').then((session: OT.Session) => {
         this.session = session;
         this.session.on('streamCreated', (event) => {
           this.streams.push(event.stream);
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
           console.error(err);
           alert('Unable to connect. Make sure you have updated the config.ts file with your OpenTok details.');
         });
-    });
+    // });
   }
 }
 interface Device {
